@@ -8,6 +8,27 @@ body {
 	font-size: 8px;
 	horizontal-align: right;
 }
+
+i {
+  display: inline-block;
+  overflow: hidden;
+  background-image: url(c.png);
+  background-repeat: none;
+  text-indent: 10000px;
+  width: 10px;
+  height: 10px;
+}
+
+i.SPR { background-position: 0px 0px; }
+i.PR { background-position: -10px 0px; }
+i.SQPR { background-position: -20px 0px; }
+i.QPR { background-position: 0px -10px; }
+i.HPR { background-position: -10px -10px; }
+i.br { background-position: -20px -10px; }
+i.ar { background-position: 0px -20px; }
+i.x { background-position: -10px -20px; }
+i._ { background-position: -20px -20px; }
+
 img { display: block; }
 tr:hover { background: yellow; }
 tr.tilingnames:hover {background: white;  }
@@ -73,15 +94,15 @@ height: auto;
 <h1>Rolling polyhedron Results table</h1>
 <p><a href="https://akirabaes.com/polyrolly/">Back to HUB</a>
 <table >
-  <tr><td><img src=SPR.png></td><td>Perfectly Stable Plane Roller<td></tr>
-  <tr><td><img src=PR.png></td><td>Other Plane Roller<td></tr>
-  <tr><td><img src=SQPR.png></td><td>Perfectly Stable Quasi-Plane Roller<td></tr>
-  <tr><td><img src=QPR.png></td><td>Other Quasi-Plane Roller<td></tr>
-  <tr><td><img src=HPR.png></td><td>Hollow-Plane Roller<td></tr>
-  <tr><td><img src=br.png></td><td>Band Roller<td></tr>
-  <tr><td><img src=ar.png></td><td>Area Roller<td></tr>
-  <tr><td><img src=x.png></td><td>Area Roller (cannot escape starting tile)<td></tr>
-  <tr><td><img src=_.png></td><td>Incompatible<td></tr>
+  <tr><td><i class=SPR></td><td>Perfectly Stable Plane Roller<td></tr>
+  <tr><td><i class=PR></td><td>Other Plane Roller<td></tr>
+  <tr><td><i class=SQPR></td><td>Perfectly Stable Quasi-Plane Roller<td></tr>
+  <tr><td><i class=QPR></td><td>Other Quasi-Plane Roller<td></tr>
+  <tr><td><i class=HPR></td><td>Hollow-Plane Roller<td></tr>
+  <tr><td><i class=br></td><td>Band Roller<td></tr>
+  <tr><td><i class=ar></td><td>Area Roller<td></tr>
+  <tr><td><i class=x></td><td>Area Roller (cannot escape starting tile)<td></tr>
+  <tr><td><i class=_></td><td>Incompatible<td></tr>
 </table >
 
 </body>
@@ -127,7 +148,8 @@ for (const [pindex, poly] of polynames.entries()){
 	let cellinside = document.createElement('a');
 	cellinside.className += "tooltip";
 	cellinside.href = 'https://akirabaes.com/polyrolly/resulttable/r.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
-	cellinside.innerHTML = '<img src=https://akirabaes.com/polyrolly/resulttable/'+resulttype+'.png>';
+	/*cellinside.innerHTML = '<img src=https://akirabaes.com/polyrolly/resulttable/'+resulttype+'.png>';*/
+	cellinside.innerHTML = '<i class='+resulttype+'>'
 	newCell.appendChild(cellinside);
     //newCell.innerHTML = '<a class="tooltip" href="https://akirabaes.com/polyrolly/resulttable/r.php?p='+poly+'&amp;t='+splittiling+'&amp;r='+resulttype+'"></a>';
 	const description =descriptions[parseInt(comboindex[counter])];
