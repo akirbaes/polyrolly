@@ -176,25 +176,33 @@ echo "Incompatible";
   
   <tr>
 <?php
-echo "<td><img class=small src=r/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".png width=400px></td>";
-echo "<td><img class=small src=s/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".png width=400px></td>";
+echo "<td rowspan='2'><img class=small src='smallpics/" . ($_GET["p"]) . "[on]" . ($_GET["full"]) . ".png' width=400px></td>";
+echo "<td>
+  <img class=small src=r/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".png width=200px>
+  <img class=small src=s/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".png width=200px>
+  </td>";
 ?>
   </tr>
 
 
   <tr>
-<td><div>
-<span style="color:RoyalBlue">■ Blue</span> lines: symmetry vectors. <br/>
-<span style="color:DarkGray">■ Grey</span> tiles: reached tiles. <br/>
-<span style="color:Brown">■ Brown</span> tiles: reached with all compatible faces. <br/>
-<span style="color:Red">■ Red</span> tiles: reached with all compatible faces in all orientations. <br/>
-<span style="color:Black">■ Black</span>: unreachable (incompatible). <br/>
-</div>
-</td>
 
 <td><div>
-<span style="color:DarkGray">■ Grey</span> tiles: stable tiles: tiles that are always part of the rolling graph <br/>with any compatible face/orientation. <br/>
-<span style="color:Black">■ Black</span> tiles: unreachable (incompatible).
+  
+<?php
+if(strtolower($_GET["r"])!=$_GET["r"] or ($_GET["r"])=="br"){
+  echo '<span style="color:RoyalBlue">■ Blue</span> line: symmetry vector <br/>';
+}?>
+<span style="color:DarkGray">■ Grey</span> tile: reached tile <br/>
+<span style="color:Brown">■ Brown</span> tile: reached with all compatible face <br/>
+<span style="color:Red">■ Red</span> tile: reached with all faces in all orientations <br/>
+<span style="color:Black">■ Black</span>: unreachable (incompatible) <br/>
+⬤ Circle mark: guaranteed starting point in any orientations<br/>
+<?php
+if($_GET["r"] != "SPR" and $_GET["r"] != "PR"){
+  echo "✕ Cross mark: incompatible tile";
+}?>
+
 </div>
 </td>
  </tr>
