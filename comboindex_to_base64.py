@@ -15,6 +15,9 @@ print(bytearray(encoded))
 print(len(bytearray(encoded)))
 print(len(str(bytearray(encoded))))
 
+with open("comboindex", "bw") as f:
+    f.write(bytearray(encoded))
+
 print(standard_b64encode(bytearray(encoded)))
 print(len(standard_b64encode(bytearray(encoded))))
 
@@ -26,3 +29,6 @@ base85 = b'5Su@C7i3^=5<UqW2EsDZ/N#^U/M01O5<h:h5!Cni5<h@F&hP[f4YJBM5<h@a/M0+L/j;3
 
 print(len(base64))
 print(len(base85))
+
+with open("indexbase64", "bw") as f:
+    f.write(standard_b64encode(bytearray(encoded)))
