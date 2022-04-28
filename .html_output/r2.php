@@ -178,11 +178,11 @@ echo "Incompatible";
     
         <span class="smaller">
             <div class="centered">Rolling pattern</div>
-            <?php echo "<img class='filler' src='repr_area/" . ($_GET["p"]) . "@" . ($_GET["full"]) . ".svg' height=200px>"; ?>
+            <?php echo "<img class='filler' src='repr_area/" . ($_GET["p"]) . "@" . ($_GET["full"]) . ".svg'>"; ?>
             <div class=legend>
                 <?php
                 if(strtolower($_GET["r"])!=$_GET["r"] or ($_GET["r"])=="br"){
-                echo '<span style="color:RoyalBlue">■ Blue</span> line: symmetry vector <br/>\n';
+                echo '<span style="color:RoyalBlue">■ Blue</span> line: symmetry vector <br/>';
                 }?>
 
                 <span style="color:DarkGray">■ Grey</span> tile: reached tile <br>
@@ -202,7 +202,7 @@ echo "Incompatible";
     <span class="element">
         <span class="smaller">
             <div class="centered"><?php echo "Tiling: " . $_GET["full"] . ""; ?></div>
-            <?php echo "<img class=filler src=t/" . ($_GET["t"]) . ".png width=400px>";?>
+            <?php echo "<img src=t/" . ($_GET["t"]) . ".png width=400px>";?>
             <div class=legend>
                 Letters: tile-wise symmetries. <br>
                 Colors: self-rotationnal symmetries.<br>
