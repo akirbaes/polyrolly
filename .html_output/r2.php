@@ -178,7 +178,7 @@ echo "Incompatible";
     
         <span class="smaller">
             <div class="centered">Rolling pattern</div>
-            <?php echo "<img class='filler' src='repr_area/" . ($_GET["p"]) . "@" . ($_GET["full"]) . ".svg'>"; ?>
+            <?php echo "<img class='filler' src='svg/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".svg'>"; ?>
             <div class=legend>
                 <?php
                 if(strtolower($_GET["r"])!=$_GET["r"] or ($_GET["r"])=="br"){
@@ -188,7 +188,6 @@ echo "Incompatible";
                 <span style="color:DarkGray">■ Grey</span> tile: reached tile <br>
                 <span style="color:Brown">■ Brown</span> tile: reached with all compatible face <br>
                 <span style="color:Red">■ Red</span> tile: reached with all faces in all orientations <br>
-                <span style="color:Black">■ Black</span>: unreachable (incompatible) <br>
                 ⬤ Circle mark: guaranteed starting point in any orientations<br>
                 <?php
                 if($_GET["r"] != "SPR" and $_GET["r"] != "PR"){
