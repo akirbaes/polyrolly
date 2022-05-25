@@ -208,10 +208,16 @@ echo "Incompatible";
                 Bold: parallelogon supertile.
             </div>
         </span>
-
+    </span>
+    <span class="element">
+        <span>
+            <div class="centered"><?php echo "Polyhedron: " . $_GET["p"] . ""; ?></div>
+            <?php echo "<img src='p/" . ($_GET["p"]) . ".png' width=400px>"; ?>
+        </span>
+    
         <span class="smaller">
             <div class="centered">Polyhedron Net</div>
-            <?php echo "<img src=n/" . ($_GET["t"]) . "@" . ($_GET["p"]) . ".png.svg width=400px><br/>";?>
+            <?php echo "<img src=n/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".svg width=400px><br/>";?>
             <div class=legend>
                 <span style="color:blue">■ Blue</span>:used faces. <br>
                 <span style="color:red">■ Red</span>: unused.
