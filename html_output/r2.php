@@ -212,12 +212,12 @@ echo "Incompatible";
     <span class="element">
         <span>
             <div class="centered"><?php echo "Polyhedron: " . $_GET["p"] . ""; ?></div>
-            <?php echo "<img src='p/" . ($_GET["p"]) . ".png' width=400px>"; ?>
+            <?php echo "<img src='p/" . ($_GET["p"]) . ".png' max-height=400px max-width=400px width=auto height=auto>"; ?>
         </span>
     
         <span class="smaller">
             <div class="centered">Polyhedron Net</div>
-            <?php echo "<img src=n/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".svg width=400px><br/>";?>
+            <?php echo "<img src=n/" . ($_GET["p"]) . "@" . ($_GET["t"]) . ".svg max-height=350px max-width=400px width=auto height=auto><br/>";?>
             <div class=legend>
                 <span style="color:blue">■ Blue</span>:used faces. <br>
                 <span style="color:red">■ Red</span>: unused.
