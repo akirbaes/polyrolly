@@ -150,14 +150,15 @@ for (const [pindex, poly] of polynames.entries()){
 	let splittiling = tiling.split(" ")[0];
 	let cellinside = document.createElement('a');
 	cellinside.className += "tooltip";
-	cellinside.href = 'https://akirabaes.com/polyrolly/resulttable/r2.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
+	cellinside.href = 'r2.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
 	/*cellinside.innerHTML = '<img src=https://akirabaes.com/polyrolly/resulttable/'+resulttype+'.png>';*/
 	cellinside.innerHTML = '<i class='+resulttype+'>'
 	newCell.appendChild(cellinside);
     //newCell.innerHTML = '<a class="tooltip" href="https://akirabaes.com/polyrolly/resulttable/r2.php?p='+poly+'&amp;t='+splittiling+'&amp;r='+resulttype+'"></a>';
+	//https://akirabaes.com/polyrolly/resulttable/ for online mode, but right now trying offline
 	const description =descriptions[parseInt(comboindex[counter])];
 	cellinside.addEventListener('mouseover', function handleMouseOver() {
-		cellinside.innerHTML+='<span><img loading="lazy" src="https://akirabaes.com/polyrolly/resulttable/smallpics/'+poly+'[on]'+tiling+'.png"><h3>'+poly+' on '+tiling+'</h3>'+'<img src="./'+resulttype+'.png">'+description+'</span>';
+		cellinside.innerHTML+='<span><img loading="lazy" src="smallpics/'+poly+'[on]'+tiling+'.png"><h3>'+poly+' on '+tiling+'</h3>'+'<img src="./'+resulttype+'.png">'+description+'</span>';
 		cellinside.removeEventListener("mouseover", handleMouseOver);
 	});
 	counter+=1;
