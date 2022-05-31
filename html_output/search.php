@@ -2,13 +2,6 @@
 <html>
 <head>
 <style>
-tr.tilingnames>td>span>a{writing-mode: vertical-rl;vertical-align: baseline;transform: rotate(-180deg);}
-body {
-	font-family: 'Courier New', monospace;
-	font-size: 8px;
-	horizontal-align: right;
-}
-
 i {
   display: block;
   overflow: hidden;
@@ -17,6 +10,10 @@ i {
   text-indent: 10000px;
   width: 10px;
   height: 10px;
+}
+
+.cell {
+    border: 1px solid black;
 }
 
 i.SPR { background-position: 0px 0px; }
@@ -29,87 +26,43 @@ i.ar { background-position: 0px -20px; }
 i.x { background-position: -10px -20px; }
 i._ { background-position: -20px -20px; }
 
-img { display: block; }
-tr:hover { background: yellow; }
-tr.tilingnames:hover {background: white;  }
-td, tr, img  { padding: 0px; margin: 0px; border: none; }
-table { border-collapse: collapse; }
-.polycell {text-align: center;}
-.tooltip {
-	text-decoration:none;
-	position:relative;
-}
-	
-.tooltip span {
-	display:none;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	color:black;
-	background:white; 
-}
-	
-.tooltip span img {
-	float:left;
-	margin:0px 8px 8px 0;
-}
-	
-.tooltip:hover span {
-	display:block;
-	position:absolute;
-	top:0;
-	left:0;
-	z-index:1000;
-	width:auto;
-	border:1px solid black;
-	margin-top:12px;
-	margin-left:32px;
-	overflow:hidden;
-	padding:8px;
-}
+</style>
+<link rel="stylesheet" type="text/css" 
+    href="r2style.css">
 
-tr.tilingnames .tooltip:hover span{
-	display:block;
-	position:absolute;
-	top:-200%;
-	left:-50%;
-	z-index:10000;
-	width:auto;
-	border:1px solid black;
-	margin-top:12px;
-	margin-left:32px;
-	overflow:hidden ;
-	padding:8px;
-}
-
-
-img {  
+	<style>
+		
+img.poly {  
 max-width: 200px;  
 height: auto;  
 }  
-</style>
+	
+img.rolling {  
+max-width:300px;  
+max-height:300px;  
+}  
+
+	</style>
 <title>Rolling polyhedron Results table</title>
 </head>
 <body>
 <h1>Rolling polyhedron Results table</h1>
-<p><a href="..">Back to HUB</a>
+<p><a href="..">Back to HUB</a></p>
+<p><a href="./">Back to Table</a></p>
 <table >
-<tr><td><a href="./search.php?q=SPR">[search]</a></td><td><i class=SPR></td><td>Perfectly Stable Plane Roller <td></tr>
-<tr><td><a href="./search.php?q=PR">[search]</a></td><td><i class=PR></td><td>Other Plane Roller<td></tr>
-<tr><td><a href="./search.php?q=SQPR">[search]</a></td><td><i class=SQPR></td><td>Perfectly Stable Quasi-Plane Roller<td></tr>
-<tr><td><a href="./search.php?q=QPR">[search]</a></td><td><i class=QPR></td><td>Other Quasi-Plane Roller<td></tr>
-<tr><td><a href="./search.php?q=HPR">[search]</a></td><td><i class=HPR></td><td>Hollow-Plane Roller<td></tr>
-<tr><td><a href="./search.php?q=br">[search]</a></td><td><i class=br></td><td>Band Roller<td></tr>
-<tr><td><a href="./search.php?q=ar">[search]</a></td><td><i class=ar></td><td>Area Roller<td></tr>
-<tr><td><a href="./search.php?q=x">[search]</a></td><td><i class=x></td><td>Area Roller (cannot escape starting tile)<td></tr>
-<tr><td><a href="./search.php?q=_">[search]</a></td><td><i class=_></td><td>Incompatible<td></tr>
+  <tr><td><a href="./search.php?q=SPR">[search]</a></td><td><i class=SPR></td><td>Perfectly Stable Plane Roller <td></tr>
+  <tr><td><a href="./search.php?q=PR">[search]</a></td><td><i class=PR></td><td>Other Plane Roller<td></tr>
+  <tr><td><a href="./search.php?q=SQPR">[search]</a></td><td><i class=SQPR></td><td>Perfectly Stable Quasi-Plane Roller<td></tr>
+  <tr><td><a href="./search.php?q=QPR">[search]</a></td><td><i class=QPR></td><td>Other Quasi-Plane Roller<td></tr>
+  <tr><td><a href="./search.php?q=HPR">[search]</a></td><td><i class=HPR></td><td>Hollow-Plane Roller<td></tr>
+  <tr><td><a href="./search.php?q=br">[search]</a></td><td><i class=br></td><td>Band Roller<td></tr>
+  <tr><td><a href="./search.php?q=ar">[search]</a></td><td><i class=ar></td><td>Area Roller<td></tr>
+  <tr><td><a href="./search.php?q=x">[search]</a></td><td><i class=x></td><td>Area Roller (cannot escape starting tile)<td></tr>
+  <tr><td><a href="./search.php?q=_">[search]</a></td><td><i class=_></td><td>Incompatible<td></tr>
 </table >
 
-</body>
-</html>
 
 <script type="text/javascript">
-
 var polylinks = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'snub_cube', 0, 0, 0, 0, 0, 0, 'snub_dodecahedron', 'Johnson_solid?solid=J1\\#Pyramids', 'Johnson_solid?solid=J2\\#Pyramids', 'Johnson_solid?solid=J3\\#Cupolae_and_rotunda', 'Johnson_solid?solid=J4\\#Cupolae_and_rotunda', 'Johnson_solid?solid=J5\\#Cupolae_and_rotunda', 'Johnson_solid?solid=J6\\#Cupolae_and_rotunda', 'Johnson_solid?solid=J7\\#Elongated_and_gyroelongated_pyramids', 'Johnson_solid?solid=J8\\#Elongated_and_gyroelongated_pyramids', 'Johnson_solid?solid=J9\\#Elongated_and_gyroelongated_pyramids', 'Johnson_solid?solid=J10\\#Elongated_and_gyroelongated_pyramids', 'Johnson_solid?solid=J11\\#Elongated_and_gyroelongated_pyramids', 'Johnson_solid?solid=J12\\#Bipyramids', 'Johnson_solid?solid=J13\\#Bipyramids', 'Johnson_solid?solid=J14\\#Bipyramids', 'Johnson_solid?solid=J15\\#Bipyramids', 'Johnson_solid?solid=J16\\#Bipyramids', 'Johnson_solid?solid=J17\\#Bipyramids', 'Johnson_solid?solid=J18\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J19\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J20\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J21\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J22\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J23\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J24\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J25\\#Elongated_and_gyroelongated_cupolae_and_rotundas', 'Johnson_solid?solid=J26\\#Bicupolae', 'Johnson_solid?solid=J27\\#Bicupolae', 'Johnson_solid?solid=J28\\#Bicupolae', 'Johnson_solid?solid=J29\\#Bicupolae', 'Johnson_solid?solid=J30\\#Bicupolae', 'Johnson_solid?solid=J31\\#Bicupolae', 'Johnson_solid?solid=J32\\#Cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J33\\#Cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J34\\#Cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J35\\#Elongated_bicupolae', 'Johnson_solid?solid=J36\\#Elongated_bicupolae', 'Johnson_solid?solid=J37\\#Elongated_bicupolae', 'Johnson_solid?solid=J38\\#Elongated_bicupolae', 'Johnson_solid?solid=J39\\#Elongated_bicupolae', 'Johnson_solid?solid=J40\\#Elongated_cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J41\\#Elongated_cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J42\\#Elongated_cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J43\\#Elongated_cupola-rotundas_and_birotundas', 'Johnson_solid?solid=J44\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J44\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J45\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J45\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J46\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J46\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J47\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J47\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J48\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J48\\#Gyroelongated_bicupolae,_cupola-rotundas,_and_birotundas', 'Johnson_solid?solid=J49\\#Augmented_prisms', 'Johnson_solid?solid=J50\\#Augmented_prisms', 'Johnson_solid?solid=J51\\#Augmented_prisms', 'Johnson_solid?solid=J52\\#Augmented_prisms', 'Johnson_solid?solid=J53\\#Augmented_prisms', 'Johnson_solid?solid=J54\\#Augmented_prisms', 'Johnson_solid?solid=J55\\#Augmented_prisms', 'Johnson_solid?solid=J56\\#Augmented_prisms', 'Johnson_solid?solid=J57\\#Augmented_prisms', 'Johnson_solid?solid=J58\\#Augmented_dodecahedra', 'Johnson_solid?solid=J59\\#Augmented_dodecahedra', 'Johnson_solid?solid=J60\\#Augmented_dodecahedra', 'Johnson_solid?solid=J61\\#Augmented_dodecahedra', 'Johnson_solid?solid=J62\\#Diminished_and_augmented_diminished_icosahedra', 'Johnson_solid?solid=J63\\#Diminished_and_augmented_diminished_icosahedra', 'Johnson_solid?solid=J64\\#Diminished_and_augmented_diminished_icosahedra', 'Johnson_solid?solid=J65\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J66\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J67\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J68\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J69\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J70\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J71\\#Augmented_Archimedean_solids', 'Johnson_solid?solid=J72\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J73\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J74\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J75\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J76\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J77\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J78\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J79\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J80\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J81\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J82\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J83\\#Gyrate_and_diminished_rhombicosidodecahedra', 'Johnson_solid?solid=J84\\#Snub_antiprisms', 'Johnson_solid?solid=J85\\#Snub_antiprisms', 'Johnson_solid?solid=J86\\#Others', 'Johnson_solid?solid=J87\\#Others', 'Johnson_solid?solid=J88\\#Others', 'Johnson_solid?solid=J89\\#Others', 'Johnson_solid?solid=J90\\#Others', 'Johnson_solid?solid=J91\\#Others', 'Johnson_solid?solid=J92\\#Others', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var polynames = ["tetrahedron","cube","octahedron","dodecahedron","icosahedron","truncated_tetrahedron","cuboctahedron","truncated_cube","truncated_octahedron","rhombicuboctahedron","truncated_cuboctahedron","snub_cube","snub_cube_c","icosidodecahedron","truncated_dodecahedron","truncated_icosahedron","rhombicosidodecahedron","truncated_icosidodecahedron","snub_dodecahedron","snub_dodecahedron_c","j1","j2","j3","j4","j5","j6","j7","j8","j9","j10","j11","j12","j13","j14","j15","j16","j17","j18","j19","j20","j21","j22","j23","j24","j25","j26","j27","j28","j29","j30","j31","j32","j33","j34","j35","j36","j37","j38","j39","j40","j41","j42","j43","j44","j44_c","j45","j45_c","j46","j46_c","j47","j47_c","j48","j48_c","j49","j50","j51","j52","j53","j54","j55","j56","j57","j58","j59","j60","j61","j62","j63","j64","j65","j66","j67","j68","j69","j70","j71","j72","j73","j74","j75","j76","j77","j78","j79","j80","j81","j82","j83","j84","j85","j86","j87","j88","j89","j90","j91","j92","triangular_prism","pentagonal_prism","hexagonal_prism","octagonal_prism","decagonal_prism","dodecagonal_prism","square_antiprism","pentagonal_antiprism","hexagonal_antiprism","octagonal_antiprism","decagonal_antiprism","dodecagonal_antiprism"]
 var tilingnames = ["1u01 (3^6)","1u02 (4^4)","1u03 (6^3)","1u04 (3^4x6)","1u05 (3^3x4^2)","1u06 (3^2x4x3x4)","1u07 (3x4x6x4)","1u08 (3x6x3x6)","1u09 (3x12^2)","1u10 (4x6x12)","1u11 (4x8^2)","2u01 (3^6;3^4x6)1","2u02 (3^6;3^4x6)2","2u03 (3^6;3^3x4^2)1","2u04 (3^6;3^3x4^2)2","2u05 (3^6;3^2x4x3x4)","2u06 (3^6;3^2x4x12)","2u07 (3^6;3^2x6^2)","2u08 (3^4x6;3^2x6^2)","2u09 (3^3x4^2;3^2x4x3x4)1","2u10 (3^3x4^2;3^2x4x3x4)2","2u11 (3^3x4^2;3x4x6x4)","2u12 (3^3x4^2;4^4)1","2u13 (3^3x4^2;4^4)2","2u14 (3^2x4x3x4;3x4x6x4)","2u15 (3^2x6^2;3x6x3x6)","2u16 (3x4x3x12;3x12^2)","2u17 (3x4^2x6;3x4x6x4)","2u18 (3x4^2x6;3x6x3x6)1","2u19 (3x4^2x6;3x6x3x6)_2)","2u20 (3x4x6x4;4x6x12)","3uhv01 (3^6;3^4x6;3^2x6^2)1","3uhv02 (3^6;3^4x6;3^2x6^2)2","3uhv03 (3^6;3^4x6;3^2x6^2)3","3uhv04 (3^6;3^4x6;3x6x3x6)1","3uhv05 (3^6;3^4x6;3x6x3x6)2","3uhv06 (3^6;3^4x6;3x6x3x6)3","3uhv07 (3^6;3^3x4^2;3^2x4x3x4)","3uhv08 (3^6,3^3x4^2;3^2x4x12)","3uhv09 (3^6;3^3x4^2;3x4x6x4)","3uhv10 (3^6;3^3x4^2;4^4)1","3uhv11 (3^6;3^3x4^2;4^4)2","3uhv12 (3^6;3^3x4^2;4^4)3","3uhv13 (3^6;3^3x4^2;4^4)4","3uhv14 (3^6;3^2x4x3x4;3^2x4x12)","3uhv15 (3^6;3^2x4x3x3x4;3x4^2x6)","3uhv16 (3^6;3^2x4x3x4;3x4x6x4)1","3uhv17 (3^6;3^2x4x3x4;3x4x6x4)2","3uhv18 (3^6;3^2x4x12;4x6x12)","3uhv19 (3^6;3^2x6^2;6^3)","3uhv20 (3^4x6;3^3x4^2;3^2x4x3x4)","3uhv21 (3^4x6;3^3x4^2;3x4^2x6)","3uhv22 (3^4x6;3^2x6^2;6^3)","3uhv23 (3^3x4^2;3^2x4x3x4;4^4)","3uhv24 (3^3x4^2;3^2x4x12;3x4x6x4)","3uhv25 (3^3x4^2;3^2x6^2;3x4^2x6)","3uhv26 (3^2x4x3x4;3x4^2x6;3x4x6x4)","3uhv27 (3^2x4x12;3x4x3x12;3x12^2)","3uhv28 (3^2x4x12;3x4x6x4;3x12^2)","3uhv29 (3^2x6^2;3x4^2x6;3x6x3x6)1","3uhv30 (3^2x6^2;3x4^2x6;3x6x3x6)2","3uhv31 (3^2x6^2;3x6x3x6;6^3)1","3uhv32 (3^2x6^2;3x6x3x6;6^3)2","3uhv33 (3x4x3x12;3x4x6x4;3x12^2)","3uhv34 (3x4^2x6;3x4x6x4;4^4)","3uhv35 (3x4^2x6;3x6x3x6;4^4)1","3uhv36 (3x4^2x6;3x6x3x6;4^4)2","3uhv37 (3x4^2x6;3x6x3x6;4^4)3","3uhv38 (3x4^2x6;3x6x3x6;4^4)4","3uhv39 (3x4^2x6;3x6x3x6;4x6x12)","3unhv40 (3^6;3^6;3^4x6^1)","3unhv41 (3^6;3^6;3^4x6^2)","3unhv42 (3^6;3^6;3^4x6^3)","3unhv43 (3^6;3^4x6;3^4x6)","3unhv44 (3^6;3^6;3^3x4^2)1","3unhv45 (3^6;3^6;3^3x4^2)2","3unhv46 (3^6;3^3x4^2;3^3x4^2)1","3unhv47 (3^6;3^3x4^2;3^3x4^2)2","3unhv48 (3^6;3^2x4x3x4;3^2x4x3x4)","3unhv49 (3^4x6;3^4x6;3x6x3x6)1","3unhv50 (3^4x6;3^4x6;3x6x3x6)2","3unhv51 (3^3x4^2;3^3x4^2;3^2x4x3x4)","3unhv52 (3^3x4^2;3^2x4x3x4;3^2x4x3x4)","3unhv53 (3^3x4^2;3^3x4^2;4^4)1","3unhv54 (3^3x4^2;3^3x4^2;4^4)2","3unhv55 (3^3x4^2;4^4;4^4)1","3unhv56 (3^3x4^2;4^4;4^4)2","3unhv57 (3^2x6^2;3x6x3x6;3x6x3x6)","3unhv58 (3x4^2x6;3x4x6x4;3x4x6x4)","3unhv59 (3x4^2x6;3x4^2x6;3x6x3x6)","3unhv60 (3x4^2x6;3x6x3x6;3x6x3x6)1","3unhv61 (3x4^2x6;3x6x3x6;3x6x3x6)2","4u01 (3^6;3^4x6;3^3x4^2;3x4^2x6)1","4u02 (3^6;3^4x6;3^3x4^2;3x4^2x6)2","4u03 (3^6;3^4x6;3^2x6^2;3x6x3x6)","4u04 (3^6;3^4x6;3^2x6^2;6^3)1","4u05 (3^6;3^4x6;3^2x6^2;6^3)2","4u06 (3^6;3^4x6;3^2x6^2;6^3)3","4u07 (3^6;3^4x6;3^2x6^2;6^3)4","4u08 (3^6;3^4x6;3x4^2x6;3x6x3x6)1","4u09 (3^6;3^4x6;3x4^2x6;3x6x3x6)2","4u10 (3^6;3^3x4^2;3^2x4x3x4;3^2x4x12)","4u11 (3^6;3^3x4^2;3^2x4x3x4;3x4x6x4)1","4u12 (3^6;3^3x4^2;3^2x4x3x4;3x4x6x4)2","4u13 (3^6;3^3x4^2;3^2x4x3x4;4^4)","4u14 (3^6;3^3x4^2;3x4^2x6;3x6x3x6)","4u15 (3^6;3^2x4x3x4;3^2x4x12;3x12^2)","4u16 (3^6;3^2x4x3x4;3x4x3x12;3x12^2)","4u17 (3^6;3^2x4x3x4;3x4^2x6;3x4x6x4)","4u18 (3^4x6;3^2x6^2;3x6x3x6;6^3)1","4u19 (3^4x6;3^2x6^2;3x6x3x6;6^3)2","4u20 (3^3x4^2;3^2x4x12;3x4x3x12;3x12^2)","4u21 (3^3x4^2;3^2x4x12;3x4x3x12;3x12^2)2","4u22 (3^3x4^2;3^2x4x12;3x4x3x12;4^4)","4u23 (3^3x4^2;3^2x6^2;3x4^2x6;4x6x12)","4u24 (3^3x4^2;3^2x6^2;3x4^2x6;6^3)1","4u25 (3^3x4^2;3^2x6^2;3x4^2x6;6^3)2","4u26 (3^2x4x3x4;3^2x6^2;3x4^2x6;3x4x6x4)","4u27 (3^2x4x3x4;3^2x6^2;3x4^2x6;4x6x12)","4u28 (3^2x4x3x4;3^2x6^2;3x4^2x6;6^3)","4u29 (3^2x4x12;3x4x3x12;3x4x6x4;4x6x12)","4u30 (3^2x6^2;3x4^2x6;3x6x3x6;4^4)1","4u31 (3^2x6^2;3x4^2x6;3x6x3x6;4^4)2","4u32 (3^2x6^2;3x4^2x6;3x6x3x6;4^4)3","4u33 (3^2x6^2;3x4^2x6;3x6x3x6;4^4)4","4u34 (3^6;3^2x6^2;6^3;6^3)1","4u35 (3^6;3^2x6^2;6^3;6^3)2","4u36 (3^4x6;3^2x6^2;3^2x6^2;3x6x3x6)","4u37 (3^2x6^2;3^2x6^2;3x6x3x6;6^3)","4u38 (3^2x6^2;3x6x3x6;6^3;6^3)","4u39 (3^4x6;3^2x6^2;6^3;6^3)"]
@@ -118,6 +71,8 @@ var imagenames = ["SPR","PR","SQPR","QPR","HPR","br","ar","x","_"]
 var comboindex = byteindex.reduce(function (r, e) { r.push(e & 15, (e >> 4)); return r; }, []);
 console.log(comboindex);
 
+var selection = "<?php echo $_GET["q"] ?>"
+
 var descriptions = ["Perfectly Stable Plane Roller", "Plane Roller", "Perfectly Stable Quasi-Plane Roller", "Quasi-Plane Roller", "Hollow-Plane Roller", "Band Roller", "Area Roller", "Area Roller (cannot escape starting supertile)", "Incompatible"];
 
 var counter=0;
@@ -125,44 +80,36 @@ let table = document.createElement('table');
 var tilingrow = table.insertRow();
 tilingrow.classList.add("tilingnames");
 tilingrow.insertCell();
-for (let tiling of tilingnames) {
-    let tilingTitleCell = tilingrow.insertCell();
-	let splittiling = tiling.split(" ")[0];
-	tilingTitleCell.innerHTML = '<td><span class="tooltip"><a href="https://akirabaes.com/polyrolly/resulttable/t/'+splittiling+'.png">'+splittiling+'</a></span></td>'
-	
-	tilingTitleCell.addEventListener('mouseover', function handleMouseOver() {
-		tilingTitleCell.firstChild.innerHTML+='<span><img loading="lazy" src="https://akirabaes.com/polyrolly/resulttable/t/'+splittiling+'.png">'+tiling+'</span>';
-		tilingTitleCell.removeEventListener("mouseover", handleMouseOver);
-	});
-}
-for (const [pindex, poly] of polynames.entries()){
-  table.insertRow();
-    let polycell = table.rows[table.rows.length - 1].insertCell();
-	polycell.innerHTML = '<td><a class="tooltip polycell" href="https://en.wikipedia.org/wiki/'+(polylinks[pindex]||poly)+'">'+poly+'</a></td>'
-	polycell.addEventListener('mouseover', function handleMouseOver() {
-		polycell.firstChild.innerHTML+='<span><img loading="lazy" src="p/'+poly+'.png">'+poly+'</span>';
-		polycell.removeEventListener("mouseover", handleMouseOver);
-	});
 
+for (const [pindex, poly] of polynames.entries()){
+	let newrow = true; 
+	let newCell = null;
 	for (let tiling of tilingnames) {
-    let newCell = table.rows[table.rows.length - 1].insertCell();
-	let resulttype = imagenames[parseInt(comboindex[counter])];
-	let splittiling = tiling.split(" ")[0];
-	let cellinside = document.createElement('a');
-	cellinside.className += "tooltip";
-	cellinside.href = 'r2.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
-	/*cellinside.innerHTML = '<img src=https://akirabaes.com/polyrolly/resulttable/'+resulttype+'.png>';*/
-	cellinside.innerHTML = '<i class='+resulttype+'>'
-	newCell.appendChild(cellinside);
-    //newCell.innerHTML = '<a class="tooltip" href="https://akirabaes.com/polyrolly/resulttable/r2.php?p='+poly+'&amp;t='+splittiling+'&amp;r='+resulttype+'"></a>';
-	//https://akirabaes.com/polyrolly/resulttable/ for online mode, but right now trying offline
-	const description =descriptions[parseInt(comboindex[counter])];
-	cellinside.addEventListener('mouseover', function handleMouseOver() {
-		cellinside.innerHTML+='<span><img loading="lazy" src="smallpics/'+poly+'[on]'+tiling+'.png"><h3>'+poly+' on '+tiling+'</h3>'+'<img src="./'+resulttype+'.png">'+description+'</span>';
-		cellinside.removeEventListener("mouseover", handleMouseOver);
-	});
+		let resulttype = imagenames[parseInt(comboindex[counter])];
+		if(resulttype == selection){
+			if(newrow){
+				table.insertRow();
+				let polycell = table.rows[table.rows.length - 1].insertCell();
+				polycell.innerHTML = '<td>'+'<span><img class="poly" loading="lazy" src="p/'+poly+'.png"><br>'+poly+'</span>'+'</a></td>'
+				polycell.className = 'cell';
+				newrow=false;
+				newCell = table.rows[table.rows.length - 1].insertCell();
+				newCell.setAttribute("width","5000")
+				newCell.className = "cell";
+			}
+		let splittiling = tiling.split(" ")[0];
+		let cellinside = document.createElement('a');
+		cellinside.href = 'r2.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
+        let limited = ["SPR","PR","SQPR","QPR"];
+        
+        if(selection=="SPR"||selection=="PR"||selection=="SQPR"||selection=="QPR"){
+		cellinside.innerHTML = '<span><img class="rolling" loading="lazy" src="svg/'+poly+'@'+splittiling+'.svg">'+"</span>"}
+        else{
+		cellinside.innerHTML = '<span><img class="rolling" loading="lazy" src="smallpics/'+poly+'[on]'+tiling+'.png">'+"</span>"}
+		newCell.appendChild(cellinside);
+	}
 	counter+=1;
-  }
+	}
 }
 document.body.appendChild(table);
 let p = document.createElement('p');
