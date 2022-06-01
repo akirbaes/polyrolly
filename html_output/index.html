@@ -138,7 +138,8 @@ for (let tiling of tilingnames) {
 for (const [pindex, poly] of polynames.entries()){
   table.insertRow();
     let polycell = table.rows[table.rows.length - 1].insertCell();
-	polycell.innerHTML = '<td><a class="tooltip polycell" href="https://en.wikipedia.org/wiki/'+(polylinks[pindex]||poly)+'">'+poly+'</a></td>'
+	//polycell.innerHTML = '<td><a class="tooltip polycell" href="https://en.wikipedia.org/wiki/'+(polylinks[pindex]||poly)+'">'+poly+'</a></td>'
+	polycell.innerHTML = '<td><a class="tooltip polycell" href="./search.php?q='+poly+'">'+poly+'</a></td>'
 	polycell.addEventListener('mouseover', function handleMouseOver() {
 		polycell.firstChild.innerHTML+='<span><img loading="lazy" src="p/'+poly+'.png">'+poly+'</span>';
 		polycell.removeEventListener("mouseover", handleMouseOver);
