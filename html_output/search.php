@@ -42,6 +42,10 @@ max-width:300px;
 max-height:300px;  
 }  
 
+.top{
+    vertical-align: top;
+}
+
 	</style>
 <title>Rolling polyhedron Results table</title>
 </head>
@@ -71,45 +75,69 @@ var imagenames = ["SPR","PR","SQPR","QPR","HPR","br","ar","x","_"]
 var comboindex = byteindex.reduce(function (r, e) { r.push(e & 15, (e >> 4)); return r; }, []);
 console.log(comboindex);
 
-var selection = "<?php echo $_GET["q"] ?>"
+var selectiondata = "<?php echo $_GET["q"] ?>"
 
 var descriptions = ["Perfectly Stable Plane Roller", "Plane Roller", "Perfectly Stable Quasi-Plane Roller", "Quasi-Plane Roller", "Hollow-Plane Roller", "Band Roller", "Area Roller", "Area Roller (cannot escape starting supertile)", "Incompatible"];
-
+var polyselection = false;
 var counter=0;
 let table = document.createElement('table');
 var tilingrow = table.insertRow();
 tilingrow.classList.add("tilingnames");
 tilingrow.insertCell();
 
+var selectionarray = [selectiondata];
+let savecounter = 0;
+
 for (const [pindex, poly] of polynames.entries()){
 	let newrow = true; 
 	let newCell = null;
-	for (let tiling of tilingnames) {
-		let resulttype = imagenames[parseInt(comboindex[counter])];
-		if(resulttype == selection){
-			if(newrow){
-				table.insertRow();
-				let polycell = table.rows[table.rows.length - 1].insertCell();
-				polycell.innerHTML = '<td>'+'<span><img class="poly" loading="lazy" src="p/'+poly+'.png"><br>'+poly+'</span>'+'</a></td>'
-				polycell.className = 'cell';
-				newrow=false;
-				newCell = table.rows[table.rows.length - 1].insertCell();
-				newCell.setAttribute("width","5000")
-				newCell.className = "cell";
-			}
-		let splittiling = tiling.split(" ")[0];
-		let cellinside = document.createElement('a');
-		cellinside.href = 'r2.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
-        let limited = ["SPR","PR","SQPR","QPR"];
-        
-        if(selection=="SPR"||selection=="PR"||selection=="SQPR"||selection=="QPR"){
-		cellinside.innerHTML = '<span><img class="rolling" loading="lazy" src="svg/'+poly+'@'+splittiling+'.svg">'+"</span>"}
-        else{
-		cellinside.innerHTML = '<span><img class="rolling" loading="lazy" src="smallpics/'+poly+'[on]'+tiling+'.png">'+"</span>"}
-		newCell.appendChild(cellinside);
+    if(polyselection)continue;
+    if(selectiondata==poly){
+        //Polygon mode
+        //for every type, go trough the whole tilingname counter and select the ones
+        polyselection = poly;
+        selectionarray = ["SPR","PR","SQPR","QPR","HPR","br","ar","x","_"];
+        savecounter = counter;
+    }
+    for (let selection of selectionarray)
+    {
+        if(polyselection){
+            counter=savecounter;
+            newrow=true
+        }
+        for (let tiling of tilingnames) {
+            let resulttype = imagenames[parseInt(comboindex[counter])];
+            let splittiling = tiling.split(" ")[0];
+            if(selection == resulttype){
+                if(newrow){
+                    table.insertRow();
+                    let polycell = table.rows[table.rows.length - 1].insertCell();
+                    polycell.innerHTML += '<td>';
+                    if(polyselection){
+                        const description =descriptions[parseInt(comboindex[counter])];
+                        polycell.innerHTML += "<h1>"+description+"</h1>";
+                        polycell.className += ' top';
+                    }
+                    polycell.innerHTML +='<span><img class="poly" loading="lazy" src="p/'+poly+'.png"><br>'+poly+' <a href="./search.php?q='+poly+'">[search]</a>'+'</span>'+'</a></td>'
+                    polycell.className += ' cell';
+                    newrow=false;
+                    newCell = table.rows[table.rows.length - 1].insertCell();
+                    newCell.setAttribute("width","5000")
+                    newCell.className = "cell";
+                }
+            let cellinside = document.createElement('a');
+            cellinside.href = 'r2.php?p='+poly+'&t='+splittiling+'&r='+resulttype+'&full='+tiling;
+            let limited = ["SPR","PR","SQPR","QPR"];
+            
+            if(selection=="SPR"||selection=="PR"||selection=="SQPR"||selection=="QPR"){
+            cellinside.innerHTML = '<span><img class="rolling" loading="lazy" src="svg/'+poly+'@'+splittiling+'.svg">'+"</span>"}
+            else{
+            cellinside.innerHTML = '<span><img class="rolling" loading="lazy" src="smallpics/'+poly+'[on]'+tiling+'.png">'+"</span>"}
+            newCell.appendChild(cellinside);
+        }
+        counter+=1;
 	}
-	counter+=1;
-	}
+}
 }
 document.body.appendChild(table);
 let p = document.createElement('p');
