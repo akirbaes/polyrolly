@@ -166,8 +166,14 @@ echo "Cannot escape starting cell";
 }elseif($_GET["r"] == "_"){
 echo "Incompatible";
 }
+
+
+echo '<a href="./search.php?q='.$_GET["r"].'">[search]</a>'
+
 ?>
 </h2>
+<p><a href="..">Back to HUB</a></p>
+<p><a href="./">Back to Table</a></p>
 
 <div class="flextable">
     <span class="element">
@@ -211,7 +217,7 @@ echo "Incompatible";
     </span>
     <span class="element">
         <span>
-            <div class="centered"><?php echo "Polyhedron: " . $_GET["p"] . ""; ?></div>
+            <div class="centered"><?php echo "Polyhedron: " . $_GET["p"] . " "; ?>  <?php echo '<a href="./search.php?q='.$_GET["r"].'">[search]</a>'; ?></div>
             <?php echo "<img src='p/" . ($_GET["p"]) . ".png' max-height=400px max-width=400px width=auto height=auto>"; ?>
         </span>
     
