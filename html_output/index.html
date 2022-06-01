@@ -128,10 +128,10 @@ tilingrow.insertCell();
 for (let tiling of tilingnames) {
     let tilingTitleCell = tilingrow.insertCell();
 	let splittiling = tiling.split(" ")[0];
-	tilingTitleCell.innerHTML = '<td><span class="tooltip"><a href="https://akirabaes.com/polyrolly/resulttable/t/'+splittiling+'.png">'+splittiling+'</a></span></td>'
+	tilingTitleCell.innerHTML = '<td><span class="tooltip"><a href="t/'+splittiling+'.png">'+splittiling+'</a></span></td>'
 	
 	tilingTitleCell.addEventListener('mouseover', function handleMouseOver() {
-		tilingTitleCell.firstChild.innerHTML+='<span><img loading="lazy" src="https://akirabaes.com/polyrolly/resulttable/t/'+splittiling+'.png">'+tiling+'</span>';
+		tilingTitleCell.firstChild.innerHTML+='<span><img loading="lazy" src="t/'+splittiling+'.png">'+tiling+'</span>';
 		tilingTitleCell.removeEventListener("mouseover", handleMouseOver);
 	});
 }
