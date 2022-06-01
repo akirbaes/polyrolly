@@ -138,6 +138,7 @@ $polyurls = [
 ];
 ?>
 
+<?php echo '<title>'. ($_GET["p"]) . " on " . ($_GET["t"]) . "</title>"; ?>
 </head>
 <body>
 <div class="gallery">

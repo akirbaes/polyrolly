@@ -47,10 +47,10 @@ max-height:300px;
 }
 
 	</style>
-<title>Rolling polyhedron Results table</title>
+<title>Search <?php echo $_GET["q"] ?></title>
 </head>
 <body>
-<h1>Rolling polyhedron Results table</h1>
+<h1>Search result for query: "<?php echo $_GET["q"] ?>"</h1>
 <p><a href="..">Back to HUB</a></p>
 <p><a href="./">Back to Table</a></p>
 <table >
